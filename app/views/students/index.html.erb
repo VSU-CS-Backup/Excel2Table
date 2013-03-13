@@ -1,0 +1,38 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>Student id</th>
+    <th>Student name</th>
+    <th>Email address</th>
+    <th>Major</th>
+    <th>Class</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.Student_ID %></td>
+    <td><%= student.Student_Name %></td>
+    <td><%= student.Email_Address %></td>
+    <td><%= student.Major %></td>
+    <td><%= student.Class %></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_student_path %>
+
+<h2>Import Products</h2>
+
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
